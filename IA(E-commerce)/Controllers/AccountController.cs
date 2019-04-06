@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using IA_E_commerce_.Models;
+using System.IO;
 
 namespace IA_E_commerce_.Controllers
 {
@@ -151,7 +152,18 @@ namespace IA_E_commerce_.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                //string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                //string extension = Path.GetExtension(model.ImageFile.FileName);
+                //fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                //model.Photo = "~/images/" + fileName;
+                //fileName = Path.Combine(Server.MapPath("~/images/"),fileName);
+                
+
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,
+                    firstName=model.firstName,lastName=model.lastName,phone=model.phone,
+                    jobDescription=model.jobDescription
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

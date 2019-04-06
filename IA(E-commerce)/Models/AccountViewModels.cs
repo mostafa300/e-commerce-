@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace IA_E_commerce_.Models
 {
     public class ExternalLoginConfirmationViewModel
@@ -64,6 +65,28 @@ namespace IA_E_commerce_.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "Frist Name")]
+        public string firstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastName { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string phone { get; set; }
+
+        [Required]
+        [Display(Name = "Job description")]
+        public string jobDescription { get; set; }
+
+        
+        [Display(Name = "Photo")]
+        public string Photo { get; set; }
+        
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -80,6 +103,8 @@ namespace IA_E_commerce_.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    
 
     public class ResetPasswordViewModel
     {
