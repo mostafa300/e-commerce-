@@ -635,6 +635,9 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\SharedAdmin\_Layout1.cshtml" />
     <Content Include="Views\SharedAdmin\_Layout2.cshtml" />
+    <Content Include="Views\Shared\_HomeView.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
