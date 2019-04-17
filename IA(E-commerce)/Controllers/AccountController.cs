@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using IA_E_commerce_.Models;
 using System.IO;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IA_E_commerce_.Controllers
 {
@@ -23,7 +24,7 @@ namespace IA_E_commerce_.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +36,9 @@ namespace IA_E_commerce_.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -71,6 +72,8 @@ namespace IA_E_commerce_.Controllers
         {
             if (!ModelState.IsValid)
             {
+                
+                
                 return View(model);
             }
 
@@ -80,7 +83,34 @@ namespace IA_E_commerce_.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        string id = User.Identity.GetUserId();
+                        ApplicationUser currentUser = UserManager.FindById(id);
+                        Session["id"] = currentUser.Id;
+                        Session["Name"] = currentUser.firstName;
+                        Session["Email"] = currentUser.Email;
+                        if (User.IsInRole("Customer"))
+                        {
+                            return RedirectToAction("Index", "Users");
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else if (User.IsInRole("MD")){
+                            return RedirectToAction("Index", "MD");
+                        }
+                        else if (User.IsInRole("MTL")){
+                            return RedirectToAction("Index", "MTL");
+                        }
+                        else if (User.IsInRole("MT"))
+                        {
+                            return RedirectToAction("Index", "MT");
+                        }
+                        return RedirectToAction("Login", "Account");
+                            
+                    }
+                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -121,7 +151,7 @@ namespace IA_E_commerce_.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -140,7 +170,11 @@ namespace IA_E_commerce_.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            if (User.IsInRole("Customer"))
+            {
+                return View();
+            }
+            return HttpNotFound();
         }
 
         //
@@ -157,25 +191,38 @@ namespace IA_E_commerce_.Controllers
                 //fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
                 //model.Photo = "~/images/" + fileName;
                 //fileName = Path.Combine(Server.MapPath("~/images/"),fileName);
-                
 
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,
-                    firstName=model.firstName,lastName=model.lastName,phone=model.phone,
-                    jobDescription=model.jobDescription
+
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    firstName = model.firstName,
+                    lastName = model.lastName,
+                    phone = model.phone,
+                    jobDescription = model.jobDescription
+                    
+                   
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                   /* var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(rolestore);
+                    await roleManager.CreateAsync(new IdentityRole("Customer"));*/
+                    await UserManager.AddToRoleAsync(user.Id, "Customer");
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Users");
                 }
                 AddErrors(result);
             }
@@ -403,8 +450,9 @@ namespace IA_E_commerce_.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session.Clear();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //

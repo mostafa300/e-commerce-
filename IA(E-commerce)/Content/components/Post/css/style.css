@@ -1,7 +1,10 @@
-.card{
-    width:50%;
+.root {
+    margin-left: 242px;
+}
+.card {
     margin-bottom:28px;
+    width:50%;
 }
-.card img{
-    padding-top11px;
-}
+.card .card-img-top {
+        padding-top11px;
+    }

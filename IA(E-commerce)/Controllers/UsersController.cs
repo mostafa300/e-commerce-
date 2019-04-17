@@ -1,4 +1,5 @@
 ﻿using IA_E_commerce_.Models;
+using IA_E_commerce_.ModelView;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -6,29 +7,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 
 namespace IA_E_commerce_.Controllers
-{
+
+{   [Authorize]
     public class UsersController : Controller
     {
         protected ApplicationDbContext ApplicationDbContext { get; set; }
         protected UserManager<ApplicationUser> UserManager { get; set; }
-         
+
+        private ApplicationDbContext _context;
+
         public UsersController ()
         {
+            _context = new ApplicationDbContext();
             this.ApplicationDbContext = new ApplicationDbContext();
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
         }
 
+        
 
-        // GET: Users
-        public ActionResult Index()
+       
+        protected override void Dispose(bool disposing)
         {
-            return View();
+            _context.Dispose();
         }
-     
-       public ActionResult updateProfile ()
+
+            // GET: Users
+            public ActionResult Index()
+        {
+            if (User.IsInRole("Customer"))
+            {
+                CustomerPosts customer = new CustomerPosts((string)(Session["id"]), 0); //get Customer's Posts
+                return View(customer);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+
+        }
+
+      
+
+
+        public ActionResult updateProfile ()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -38,8 +62,41 @@ namespace IA_E_commerce_.Controllers
                 return View(currentUser);
             }
             else
-                return View("updateProfile") ;
+
+             return View("updateProfile") ;
         }
+
+
+        public ActionResult Save(ApplicationUser user)
+        {
+            var UserEd = new ApplicationUser();
+            UserEd = _context.Users.Single(c => c.Id == user.Id);
+
+            UserEd.lastName = user.lastName;
+            UserEd.jobDescription = user.jobDescription;
+            UserEd.phone = user.phone;
+            UserEd.firstName = user.firstName;
+            UserEd.Email = user.Email;
+            _context.SaveChanges();
+           // return View();
+            // return View("updateProfile"); 
+            return RedirectToAction("updateProfile", "Users");
+            
+        }
+
+        public ActionResult About()
+        {
+
+            if (User.IsInRole("Customer"))
+            {
+                return View();
+            }
+            return HttpNotFound();
+        }
+
+
+
+
 
     }
 }

@@ -1,75 +1,141 @@
-﻿@model IA_E_commerce_.Models.RegisterViewModel
+﻿
 @{
-    ViewBag.Title = "Register";
+                /**/
+
+
+                Layout = null;
+}
+@using IA_E_commerce_.Models
+@model RegisterViewModel
+
+@{
+    ViewBag.Title = "Log in";
 }
 
-<h2>@ViewBag.Title.</h2>
+<!DOCTYPE html>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.firstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.lastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
-        </div>
-    </div>
+<html lang="en">
+<!-- begin::Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Metronic | Login Page - 1
+    </title>
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Web font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <link href="../../Content/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="../../Content/assets/demo/default/media/img/logo/favicon.ico" />
+</head>
+<!-- end::Head -->
+<!-- end::Body -->
+<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+    <!-- begin:: Page -->
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin" id="m_login">
+            <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
+                <div class="m-stack m-stack--hor m-stack--desktop">
+                    <div class="m-stack__item m-stack__item--fluid">
+                        <div class="m-login__wrapper">
+                            <div class="m-login__logo">
+                                <a href="#">
+                                    <img src="../../Content/assets/app/media/img//logos/logo-2.png">
+                                </a>
+                            </div>
+                            <div class="m-login__signin">
+                                <div class="m-login__head">
+                                    <h3 class="m-login__title">
+                                        Sign In To Admin
+                                    </h3>
+                                </div>
+                                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "m-login__form m-form", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.firstName, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.firstName, new { @class = "form-control m-input" })
+                                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                                    </div>
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.lastName, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control m-input" })
+                                        <!--<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">-->
+                                    </div>
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.jobDescription, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.jobDescription, new { @class = "form-control m-input" })
+                                        <!-- <input class="form-control m-input" type="password" placeholder="Password" name="password">-->
+                                    </div>
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.phone, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.phone, new { @class = "form-control m-input" })
+                                    </div>
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control m-input" })
+                                    </div>
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control m-input" })
+                                    </div>
+                                    <div class="form-group m-form__group">
+                                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control m-input" })
+                                    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.jobDescription, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.jobDescription, new { @class = "form-control" })
-        </div>
-    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" class="btn btn-default" value="Register" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.phone, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })
-        </div>
-    </div>
-    <!---
-    <div class="form-group">
-        @Html.LabelFor(m => m.Photo, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-           <input type="file" name="Photo">
-         </div>
-    </div>
-    -->
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(../../Content/assets/app/media/img//bg/bg-4.jpg)">
+                <div class="m-grid__item m-grid__item--middle">
+                    <h3 class="m-login__welcome">
+                        Join Our Community
+                    </h3>
+                    <p class="m-login__msg">
+                        Lorem ipsum dolor sit amet, coectetuer adipiscing
+                        <br>
+                        elit sed diam nonummy et nibh euismod
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+    <!-- end:: Page -->
+    <!--begin::Base Scripts -->
+    <script src="../../Content/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    <script src="../../Content/assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+    <!--end::Base Scripts -->
+    <!--begin::Page Snippets -->
+    <script src="../../Content/assets/snippets/custom/pages/user/login.js" type="text/javascript"></script>
+    <!--end::Page Snippets -->
+</body>
+<!-- end::Body -->
+</html>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

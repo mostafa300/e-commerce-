@@ -3,22 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IA_E_commerce_.Models;
+using IA_E_commerce_.ModelView;
 
 namespace IA_E_commerce_.Controllers
-{
+{   [AllowAnonymous]
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult test()
+
+        public ActionResult DefultHome()
         {
-            return View();
+            AllPosts item = new AllPosts();
+            return View(item);
         }
+        public ActionResult PostDetails(int id)
+        {
+            ApplicationDbContext _context = new ApplicationDbContext();
+
+            PostImages x = new PostImages();
+            x.pst.Id = id;
+            x.pst = _context.Posts.Find(id);
+            x.img = _context.Images.Where(s => s.PostID == id).ToList();
+            return View(x);
+
+        }
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            
 
             return View();
         }

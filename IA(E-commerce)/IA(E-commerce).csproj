@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -163,9 +166,6 @@
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -174,8 +174,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CreatePostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MDController.cs" />
+    <Compile Include="Controllers\MTController.cs" />
+    <Compile Include="Controllers\MTLController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,10 +201,74 @@
     <Compile Include="Migrations\201904052153478_add_LN_Jobdescription_Photo2.Designer.cs">
       <DependentUpon>201904052153478_add_LN_Jobdescription_Photo2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904111309473_PostTables.cs" />
+    <Compile Include="Migrations\201904111309473_PostTables.Designer.cs">
+      <DependentUpon>201904111309473_PostTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904111418470_updateNull.cs" />
+    <Compile Include="Migrations\201904111418470_updateNull.Designer.cs">
+      <DependentUpon>201904111418470_updateNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131253525_AddMigration.cs" />
+    <Compile Include="Migrations\201904131253525_AddMigration.Designer.cs">
+      <DependentUpon>201904131253525_AddMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131339521_AddRelationid.cs" />
+    <Compile Include="Migrations\201904131339521_AddRelationid.Designer.cs">
+      <DependentUpon>201904131339521_AddRelationid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131345565_AddRelationid1.cs" />
+    <Compile Include="Migrations\201904131345565_AddRelationid1.Designer.cs">
+      <DependentUpon>201904131345565_AddRelationid1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131351552_autoIncerement.cs" />
+    <Compile Include="Migrations\201904131351552_autoIncerement.Designer.cs">
+      <DependentUpon>201904131351552_autoIncerement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131508266_testrelation.cs" />
+    <Compile Include="Migrations\201904131508266_testrelation.Designer.cs">
+      <DependentUpon>201904131508266_testrelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131523122_updateintrelation.cs" />
+    <Compile Include="Migrations\201904131523122_updateintrelation.Designer.cs">
+      <DependentUpon>201904131523122_updateintrelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904131640299_AddDeliverdtoPost.cs" />
+    <Compile Include="Migrations\201904131640299_AddDeliverdtoPost.Designer.cs">
+      <DependentUpon>201904131640299_AddDeliverdtoPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904150056251_InitialCreate.cs" />
+    <Compile Include="Migrations\201904150056251_InitialCreate.Designer.cs">
+      <DependentUpon>201904150056251_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904162133401_initailTestmigration.cs" />
+    <Compile Include="Migrations\201904162133401_initailTestmigration.Designer.cs">
+      <DependentUpon>201904162133401_initailTestmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171214001_UpdateCutomerRelationPost.cs" />
+    <Compile Include="Migrations\201904171214001_UpdateCutomerRelationPost.Designer.cs">
+      <DependentUpon>201904171214001_UpdateCutomerRelationPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171259594_SeedRoles.cs" />
+    <Compile Include="Migrations\201904171259594_SeedRoles.Designer.cs">
+      <DependentUpon>201904171259594_SeedRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904172229097_AddTransationsTable.cs" />
+    <Compile Include="Migrations\201904172229097_AddTransationsTable.Designer.cs">
+      <DependentUpon>201904172229097_AddTransationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PostContent.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="ModelView\AllImages.cs" />
+    <Compile Include="ModelView\AllPostss.cs" />
+    <Compile Include="ModelView\CustomerPosts.cs" />
+    <Compile Include="ModelView\PostAndImage.cs" />
+    <Compile Include="ModelView\PostImages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -596,7 +665,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -632,16 +703,36 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Users\updateProfile.cshtml" />
     <Content Include="Views\SharedAdmin\_Layout.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\SharedAdmin\_Layout1.cshtml" />
     <Content Include="Views\SharedAdmin\_Layout2.cshtml" />
     <Content Include="Views\Shared\_HomeView.cshtml" />
-    <Content Include="Views\Home\test.cshtml" />
-    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Home\DefultHome.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\CreatePost\creates.cshtml" />
+    <Content Include="Views\Shared\_CustomerLayout.cshtml" />
+    <Content Include="Views\CreatePost\PostDetails.cshtml" />
+    <Content Include="Views\Users\Save.cshtml" />
+    <Content Include="Views\CreatePost\show.cshtml" />
+    <Content Include="Views\CreatePost\UserPosts.cshtml" />
+    <Content Include="Views\CreatePost\NotDelivered.cshtml" />
+    <Content Include="Views\CreatePost\Delivered.cshtml" />
+    <Content Include="Views\Home\PostDetails.cshtml" />
+    <Content Include="Views\Users\About.cshtml" />
+    <Content Include="Views\CreatePost\ShowEditForm.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\index.cshtml" />
+    <Content Include="Views\CreatePost\EditPostImages.cshtml" />
+    <Content Include="Views\Admin\CreateMD.cshtml" />
+    <Content Include="Views\Admin\CreateMTL.cshtml" />
+    <Content Include="Views\Admin\CreateMT.cshtml" />
+    <Content Include="Views\MD\Index.cshtml" />
+    <Content Include="Views\MT\Index.cshtml" />
+    <Content Include="Views\MTL\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
+    <Folder Include="Views\ManagePost\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -668,6 +759,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904052153478_add_LN_Jobdescription_Photo2.resx">
       <DependentUpon>201904052153478_add_LN_Jobdescription_Photo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111309473_PostTables.resx">
+      <DependentUpon>201904111309473_PostTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904111418470_updateNull.resx">
+      <DependentUpon>201904111418470_updateNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131253525_AddMigration.resx">
+      <DependentUpon>201904131253525_AddMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131339521_AddRelationid.resx">
+      <DependentUpon>201904131339521_AddRelationid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131345565_AddRelationid1.resx">
+      <DependentUpon>201904131345565_AddRelationid1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131351552_autoIncerement.resx">
+      <DependentUpon>201904131351552_autoIncerement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131508266_testrelation.resx">
+      <DependentUpon>201904131508266_testrelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131523122_updateintrelation.resx">
+      <DependentUpon>201904131523122_updateintrelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904131640299_AddDeliverdtoPost.resx">
+      <DependentUpon>201904131640299_AddDeliverdtoPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904150056251_InitialCreate.resx">
+      <DependentUpon>201904150056251_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904162133401_initailTestmigration.resx">
+      <DependentUpon>201904162133401_initailTestmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171214001_UpdateCutomerRelationPost.resx">
+      <DependentUpon>201904171214001_UpdateCutomerRelationPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171259594_SeedRoles.resx">
+      <DependentUpon>201904171259594_SeedRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904172229097_AddTransationsTable.resx">
+      <DependentUpon>201904172229097_AddTransationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

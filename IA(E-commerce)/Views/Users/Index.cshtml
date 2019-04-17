@@ -1,11 +1,56 @@
-﻿@model IA_E_commerce_.Models.ApplicationUser
-
+﻿@model  IA_E_commerce_.ModelView.CustomerPosts
 @{
     /**/
 
-    ViewBag.Title = "updateProfile";
-    Layout = "~/Views/SharedAdmin/_Layout.cshtml";
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
-<div class="m-content">
-    <h1>this is index</h1>
+
+
+
+
+
+
+<div class="container">
+
+    @foreach (var item in Model.pst)
+    {
+        var postImages = Model._context.Images.ToList().Where(x => x.PostID == item.Id);
+
+        <div class="card " style="width: 50%; margin-left:150px; ">
+
+            <!-- Card image -->
+            @foreach (var x in postImages)
+            {
+
+                var base64 = Convert.ToBase64String(x.ImageValue);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                <img class="card-img-top" src='@imgsrc' style="padding-top: 11px;height: 500px;" alt="Card image cap" />
+
+                break;
+
+
+            }
+            <!--<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" style="padding-top: 11px;" alt="Card image cap">
+
+            <!-- Card content -->
+                <div class="card-body">
+
+
+                    <!-- Title -->
+                    <h4 class="card-title">@Html.ActionLink(@item.Title, "PostDetails", "CreatePost", new { id = item.Id }, null)</h4>
+                    <!-- Text -->
+                    <p class="card-text">@item.Description</p>
+                    <!-- Button -->
+
+                    @Html.ActionLink("Edit Details", "EditPostDetails", "CreatePost", new { id = item.Id },new { @class = "btn btn-success m-btn m-btn--custom m-btn--bolder m-btn--uppercase" })
+                    @Html.ActionLink("Edit Images", "EditPostImages", "CreatePost", new { id = item.Id },new { @class = "btn btn-info active" })
+                    @Html.ActionLink("Delete", "DeletePost", "CreatePost", new { id = item.Id }, new { @class = "btn btn-danger active" })
+
+                </div>
+
+        </div>
+    }
+
 </div>

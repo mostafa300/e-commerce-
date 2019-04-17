@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using IA_E_commerce_.ModelView;
+using IA_E_commerce_.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IA_E_commerce_.Models
 {
@@ -16,7 +19,6 @@ namespace IA_E_commerce_.Models
         public string phone { get; set; }
         public string jobDescription { get; set; }
         public string Photo { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -28,6 +30,8 @@ namespace IA_E_commerce_.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<PostContent> Posts { get; set; }
+        public DbSet<Image> Images { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

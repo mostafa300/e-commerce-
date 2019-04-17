@@ -1,7 +1,56 @@
 ﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+                /**/
 
-<p>Use this area to provide additional information.</p>
+                ViewBag.Title = "About";
+                Layout = "~/Views/Shared/_HomeView.cshtml";
+}
+
+<!--begin::Portlet-->
+<div class="m-portlet m-portlet--rounded container" style="width: 66%;">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Ecommerce
+                    <small>
+                        what is our project?
+                    </small>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        An electronic Commerce projects management system is a web application that allows customers that
+        have Products to be able to Market their products by communicating with Marketing Directors and
+        Marketing Team Leaders to market their products in an easy and professional way.
+
+    </div>
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Home page Layout :
+                    <small>
+                        What can you do?
+                    </small>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <div>All the Current not assigned projects.</div> 
+        <div> All the Current assigned projects.</div> 
+        <div> Only Customers that could use the form to add new projects.</div> 
+ 
+        
+        <small>
+            so please :  <a href=@Url.Content("/Account/Login")>Login</a>
+        </small>
+        <small>
+            , if you do't have account : <a href=@Url.Content("/Account/Register")>Register</a>
+        </small>
+
+    </div>
+
+</div>
+<!--end::Portlet-->

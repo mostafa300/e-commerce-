@@ -1,0 +1,41 @@
+﻿@model  IA_E_commerce_.ModelView.AllPosts
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_HomeView.cshtml";
+}
+<div class="container">
+    @foreach (var item in Model.pst)
+    {
+
+        var postImages = Model._context.Images.ToList().Where(x => x.PostID == item.Id);
+    <div class="card container">
+
+        <!-- Card image -->
+        @foreach (var x in postImages)
+        {
+
+            var base64 = Convert.ToBase64String(x.ImageValue);
+            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+            <img class="card-img-top" src='@imgsrc' style="padding-top: 11px;height: 500px;" alt="Card image cap" />
+
+            break;
+
+
+        }
+        <!-- Card content -->
+        <div class="card-body">
+
+            <!-- Title -->
+            <h4 class="card-title"> @Html.ActionLink(@item.Title, "PostDetails", "Home", new { id = item.Id }, null)</h4>
+            <!-- Text -->
+            <p class="card-text">@item.Description</p>
+            <!-- Button -->
+            <a href="#" class="btn btn-primary">Button</a>
+
+        </div>
+
+    </div>
+        
+    }
+    </div>
