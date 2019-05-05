@@ -1,0 +1,59 @@
+﻿@model IA_E_commerce_.ModelView.MTLandMTShared
+@{
+    ViewBag.Title = "FormFeedback";
+    Layout = "~/Views/Shared/_MTLLayout.cshtml";
+}
+
+
+<div class="m-portlet m-portlet--tab container" style="margin: 20px;border-radius: 11px;width: 97%;">
+    <h2 style="text-align: center;padding-top: 32px;font-weight: 500;">Add Feedback</h2>
+
+    @using (Html.BeginForm("FeedbackAction", "MTL", FormMethod.Post, new { enctype = "multipart/form-data", @class = "m-form m-form--fit m-form--label-align-right" }))
+    {
+
+    <div class="m-portlet__body">
+        @Html.HiddenFor(m => m.MTID)
+        <div class="form-group m-form__group">
+            @Html.Label("Projects", new { @class = "exampleTextarea" })
+
+            @Html.DropDownListFor(m => m.FeedbackForm.FeedProjectID, new SelectList(Model.MTPosts, "Id", "Title"), "Select Project", new { @class = "cssstyle" })
+            @Html.ValidationMessageFor(model => model.FeedbackForm.FeedProjectID)
+        </div>
+        <div class="form-group m-form__group">
+            @Html.Label("Feedback", new { @class = "exampleTextarea" })
+
+            @Html.TextAreaFor(m => m.FeedbackForm.Description, 5, 75, new { @class = "form-control m-input m-input--air m-input--pill" })
+            @Html.ValidationMessageFor(model => model.FeedbackForm.Description)
+
+        </div>
+        <div class="form-group m-form__group">@Html.Label("Rate", new { @class = "exampleTextarea" })</div>
+        <div class="form-group m-form__group">
+
+            <fieldset class="rating">
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "5", new { @id = "star5" })<label class="full" for="star5" title="Awesome - 5 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "4 and a half", new { @id = "star4half" })<label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "4", new { @id = "star4" })<label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "3 and a half", new { @id = "star3half" })<label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "3", new { @id = "star3" })<label class="full" for="star3" title="Meh - 3 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "2 and a half", new { @id = "star2half" })<label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "2", new { @id = "star2" })<label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "1 and a half", new { @id = "star1half" })<label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "1", new { @id = "star1" })<label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                @Html.RadioButtonFor(m => m.FeedbackForm.Rate, "half", new { @id = "starhalf" })<label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset>
+        </div>
+    </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+
+                <input type="submit" class="btn btn-primary" value="Create" />
+
+                <button type="reset" class="btn btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+    }
+</div>
+

@@ -253,22 +253,133 @@
     <Compile Include="Migrations\201904171259594_SeedRoles.Designer.cs">
       <DependentUpon>201904171259594_SeedRoles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904172229097_AddTransationsTable.cs" />
-    <Compile Include="Migrations\201904172229097_AddTransationsTable.Designer.cs">
-      <DependentUpon>201904172229097_AddTransationsTable.cs</DependentUpon>
+    <Compile Include="Migrations\201904181223038_initialTestAll.cs" />
+    <Compile Include="Migrations\201904181223038_initialTestAll.Designer.cs">
+      <DependentUpon>201904181223038_initialTestAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181456491_DeleteTeam.cs" />
+    <Compile Include="Migrations\201904181456491_DeleteTeam.Designer.cs">
+      <DependentUpon>201904181456491_DeleteTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181459123_AddTeamTable.cs" />
+    <Compile Include="Migrations\201904181459123_AddTeamTable.Designer.cs">
+      <DependentUpon>201904181459123_AddTeamTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181502039_AddTeamTableRequest.cs" />
+    <Compile Include="Migrations\201904181502039_AddTeamTableRequest.Designer.cs">
+      <DependentUpon>201904181502039_AddTeamTableRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211302108_updateValueRate.cs" />
+    <Compile Include="Migrations\201904211302108_updateValueRate.Designer.cs">
+      <DependentUpon>201904211302108_updateValueRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211331300_updateValuePostid.cs" />
+    <Compile Include="Migrations\201904211331300_updateValuePostid.Designer.cs">
+      <DependentUpon>201904211331300_updateValuePostid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211428572_updateValuePostidTeam.cs" />
+    <Compile Include="Migrations\201904211428572_updateValuePostidTeam.Designer.cs">
+      <DependentUpon>201904211428572_updateValuePostidTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211434355_updateValuePostidFeedback.cs" />
+    <Compile Include="Migrations\201904211434355_updateValuePostidFeedback.Designer.cs">
+      <DependentUpon>201904211434355_updateValuePostidFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211441124_EditeTables.cs" />
+    <Compile Include="Migrations\201904211441124_EditeTables.Designer.cs">
+      <DependentUpon>201904211441124_EditeTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212215052_DeleteFeedback.cs" />
+    <Compile Include="Migrations\201904212215052_DeleteFeedback.Designer.cs">
+      <DependentUpon>201904212215052_DeleteFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212230401_AddFeedbackEvaluateTableNew.cs" />
+    <Compile Include="Migrations\201904212230401_AddFeedbackEvaluateTableNew.Designer.cs">
+      <DependentUpon>201904212230401_AddFeedbackEvaluateTableNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212233253_AddFeedbackEvaluateTableUpdate.cs" />
+    <Compile Include="Migrations\201904212233253_AddFeedbackEvaluateTableUpdate.Designer.cs">
+      <DependentUpon>201904212233253_AddFeedbackEvaluateTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212241452_AddFeedbackTabletest.cs" />
+    <Compile Include="Migrations\201904212241452_AddFeedbackTabletest.Designer.cs">
+      <DependentUpon>201904212241452_AddFeedbackTabletest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212307296_UpdateTableFeedbackActor.cs" />
+    <Compile Include="Migrations\201904212307296_UpdateTableFeedbackActor.Designer.cs">
+      <DependentUpon>201904212307296_UpdateTableFeedbackActor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212311277_UpdateTableFeedbackActor1.cs" />
+    <Compile Include="Migrations\201904212311277_UpdateTableFeedbackActor1.Designer.cs">
+      <DependentUpon>201904212311277_UpdateTableFeedbackActor1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904212318317_UpdateTableTeamProjects.cs" />
+    <Compile Include="Migrations\201904212318317_UpdateTableTeamProjects.Designer.cs">
+      <DependentUpon>201904212318317_UpdateTableTeamProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904221759444_ApprovementToPostContent.cs" />
+    <Compile Include="Migrations\201904221759444_ApprovementToPostContent.Designer.cs">
+      <DependentUpon>201904221759444_ApprovementToPostContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904231544037_AddSchecduleToPost.cs" />
+    <Compile Include="Migrations\201904231544037_AddSchecduleToPost.Designer.cs">
+      <DependentUpon>201904231544037_AddSchecduleToPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904231556428_AddSchecduleToPost1.cs" />
+    <Compile Include="Migrations\201904231556428_AddSchecduleToPost1.Designer.cs">
+      <DependentUpon>201904231556428_AddSchecduleToPost1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904231609539_AddSchecduleToPost2.cs" />
+    <Compile Include="Migrations\201904231609539_AddSchecduleToPost2.Designer.cs">
+      <DependentUpon>201904231609539_AddSchecduleToPost2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904251102409_AddNotificationTable.cs" />
+    <Compile Include="Migrations\201904251102409_AddNotificationTable.Designer.cs">
+      <DependentUpon>201904251102409_AddNotificationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904251442351_UpdateIDTeam.cs" />
+    <Compile Include="Migrations\201904251442351_UpdateIDTeam.Designer.cs">
+      <DependentUpon>201904251442351_UpdateIDTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904251449543_UpdateProjectID.cs" />
+    <Compile Include="Migrations\201904251449543_UpdateProjectID.Designer.cs">
+      <DependentUpon>201904251449543_UpdateProjectID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904261255206_DeletePhoto.cs" />
+    <Compile Include="Migrations\201904261255206_DeletePhoto.Designer.cs">
+      <DependentUpon>201904261255206_DeletePhoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904261256188_AddImageValue.cs" />
+    <Compile Include="Migrations\201904261256188_AddImageValue.Designer.cs">
+      <DependentUpon>201904261256188_AddImageValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904262021315_AddTypeNotification.cs" />
+    <Compile Include="Migrations\201904262021315_AddTypeNotification.Designer.cs">
+      <DependentUpon>201904262021315_AddTypeNotification.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FeedbackEvaluate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\PostContent.cs" />
-    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="ModelView\AdminCreatePost.cs" />
     <Compile Include="ModelView\AllImages.cs" />
     <Compile Include="ModelView\AllPostss.cs" />
+    <Compile Include="ModelView\AllTeams.cs" />
+    <Compile Include="ModelView\AllUsersModel.cs" />
     <Compile Include="ModelView\CustomerPosts.cs" />
+    <Compile Include="ModelView\MDPost.cs" />
+    <Compile Include="ModelView\MTLandMTShared.cs" />
+    <Compile Include="ModelView\MTLorMTPost.cs" />
+    <Compile Include="ModelView\MTLPostsAndTeams.cs" />
+    <Compile Include="ModelView\Popup.cs" />
     <Compile Include="ModelView\PostAndImage.cs" />
     <Compile Include="ModelView\PostImages.cs" />
+    <Compile Include="ModelView\UsersNoti.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -720,14 +831,60 @@
     <Content Include="Views\Users\About.cshtml" />
     <Content Include="Views\CreatePost\ShowEditForm.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Admin\index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\CreatePost\EditPostImages.cshtml" />
     <Content Include="Views\Admin\CreateMD.cshtml" />
     <Content Include="Views\Admin\CreateMTL.cshtml" />
     <Content Include="Views\Admin\CreateMT.cshtml" />
     <Content Include="Views\MD\Index.cshtml" />
-    <Content Include="Views\MT\Index.cshtml" />
+    <Content Include="Views\Admin\CreatePost.cshtml" />
+    <Content Include="Views\Admin\AllMD.cshtml" />
+    <Content Include="Views\Admin\AllMTL.cshtml" />
+    <Content Include="Views\Admin\AllMT.cshtml" />
+    <Content Include="Views\Admin\AllCustomer.cshtml" />
+    <Content Include="Views\Admin\CreateCustomer.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\MD\UpdateProfile.cshtml" />
+    <Content Include="Views\MD\PostDetails.cshtml" />
+    <Content Include="Views\MD\NotDelivered.cshtml" />
+    <Content Include="Views\MD\Delivered.cshtml" />
     <Content Include="Views\MTL\Index.cshtml" />
+    <Content Include="Views\Shared\_MDLayout.cshtml" />
+    <Content Include="Views\Shared\_MTLLayout.cshtml" />
+    <Content Include="Views\MTL\Delivered.cshtml" />
+    <Content Include="Views\MTL\NotDelivered.cshtml" />
+    <Content Include="Views\MTL\UpdateProfile.cshtml" />
+    <Content Include="Views\Shared\_MTLayout.cshtml" />
+    <Content Include="Views\MT\Index.cshtml" />
+    <Content Include="Views\MT\Delivered.cshtml" />
+    <Content Include="Views\MT\NotDelivered.cshtml" />
+    <Content Include="Views\MTL\Feedback.cshtml" />
+    <Content Include="Views\MTL\FormFeedback.cshtml" />
+    <Content Include="Views\MTL\TeamProject.cshtml" />
+    <Content Include="Views\Admin\EditPostDetails.cshtml" />
+    <Content Include="Views\Admin\EditPostImages.cshtml" />
+    <Content Include="Views\Admin\About.cshtml" />
+    <Content Include="Views\Admin\UpdateProfile.cshtml" />
+    <Content Include="Views\MD\AppendingProjects.cshtml" />
+    <Content Include="Views\CreatePost\AssignToMD.cshtml" />
+    <Content Include="Views\MD\StatisticalDiagrams.cshtml" />
+    <Content Include="Views\MD\RemoveMT.cshtml" />
+    <Content Include="Views\MD\RemoveMTL.cshtml" />
+    <Content Include="Views\MT\StatisticalDiagrams.cshtml" />
+    <Content Include="Views\MD\ListMT.cshtml" />
+    <Content Include="Views\MD\ListMTL.cshtml" />
+    <Content Include="Views\MTL\StatisticalDiagrams.cshtml" />
+    <Content Include="Views\MD\SetSchedule.cshtml" />
+    <Content Include="Views\MD\AssignMTLs.cshtml" />
+    <Content Include="Views\MTL\getSendedRequest.cshtml" />
+    <Content Include="Views\MD\AssignMTs.cshtml" />
+    <Content Include="Views\MT\getSendedRequest.cshtml" />
+    <Content Include="Views\MT\UpdateProfile.cshtml" />
+    <Content Include="Views\MTL\AssignMTs.cshtml" />
+    <Content Include="Views\MD\LeaveProjectRequests.cshtml" />
+    <Content Include="Views\Admin\DeliveredProject.cshtml" />
+    <Content Include="Views\Admin\NotDeliveredProject.cshtml" />
+    <Content Include="Views\MTL\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -799,8 +956,83 @@
     <EmbeddedResource Include="Migrations\201904171259594_SeedRoles.resx">
       <DependentUpon>201904171259594_SeedRoles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904172229097_AddTransationsTable.resx">
-      <DependentUpon>201904172229097_AddTransationsTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904181223038_initialTestAll.resx">
+      <DependentUpon>201904181223038_initialTestAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181456491_DeleteTeam.resx">
+      <DependentUpon>201904181456491_DeleteTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181459123_AddTeamTable.resx">
+      <DependentUpon>201904181459123_AddTeamTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181502039_AddTeamTableRequest.resx">
+      <DependentUpon>201904181502039_AddTeamTableRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211302108_updateValueRate.resx">
+      <DependentUpon>201904211302108_updateValueRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211331300_updateValuePostid.resx">
+      <DependentUpon>201904211331300_updateValuePostid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211428572_updateValuePostidTeam.resx">
+      <DependentUpon>201904211428572_updateValuePostidTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211434355_updateValuePostidFeedback.resx">
+      <DependentUpon>201904211434355_updateValuePostidFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211441124_EditeTables.resx">
+      <DependentUpon>201904211441124_EditeTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212215052_DeleteFeedback.resx">
+      <DependentUpon>201904212215052_DeleteFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212230401_AddFeedbackEvaluateTableNew.resx">
+      <DependentUpon>201904212230401_AddFeedbackEvaluateTableNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212233253_AddFeedbackEvaluateTableUpdate.resx">
+      <DependentUpon>201904212233253_AddFeedbackEvaluateTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212241452_AddFeedbackTabletest.resx">
+      <DependentUpon>201904212241452_AddFeedbackTabletest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212307296_UpdateTableFeedbackActor.resx">
+      <DependentUpon>201904212307296_UpdateTableFeedbackActor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212311277_UpdateTableFeedbackActor1.resx">
+      <DependentUpon>201904212311277_UpdateTableFeedbackActor1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904212318317_UpdateTableTeamProjects.resx">
+      <DependentUpon>201904212318317_UpdateTableTeamProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904221759444_ApprovementToPostContent.resx">
+      <DependentUpon>201904221759444_ApprovementToPostContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904231544037_AddSchecduleToPost.resx">
+      <DependentUpon>201904231544037_AddSchecduleToPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904231556428_AddSchecduleToPost1.resx">
+      <DependentUpon>201904231556428_AddSchecduleToPost1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904231609539_AddSchecduleToPost2.resx">
+      <DependentUpon>201904231609539_AddSchecduleToPost2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904251102409_AddNotificationTable.resx">
+      <DependentUpon>201904251102409_AddNotificationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904251442351_UpdateIDTeam.resx">
+      <DependentUpon>201904251442351_UpdateIDTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904251449543_UpdateProjectID.resx">
+      <DependentUpon>201904251449543_UpdateProjectID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904261255206_DeletePhoto.resx">
+      <DependentUpon>201904261255206_DeletePhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904261256188_AddImageValue.resx">
+      <DependentUpon>201904261256188_AddImageValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904262021315_AddTypeNotification.resx">
+      <DependentUpon>201904262021315_AddTypeNotification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,7 +11,10 @@ using Microsoft.Owin.Security;
 using IA_E_commerce_.Models;
 using System.IO;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using System.Web.Security;
+using IA_E_commerce_.ModelView;
+using System.Net;
+using System.Net.Mail;
 namespace IA_E_commerce_.Controllers
 {
     [Authorize]
@@ -68,18 +71,19 @@ namespace IA_E_commerce_.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(Popup model, string returnUrl)
         {
+            Session.RemoveAll();
             if (!ModelState.IsValid)
             {
                 
                 
-                return View(model);
+                return RedirectToAction("DefultHome", "Home");
             }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Login.Email, model.Login.Password, model.Login.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -89,36 +93,38 @@ namespace IA_E_commerce_.Controllers
                         Session["id"] = currentUser.Id;
                         Session["Name"] = currentUser.firstName;
                         Session["Email"] = currentUser.Email;
+                        Session["Photo"] = currentUser.ImageValue;
+
                         if (User.IsInRole("Customer"))
                         {
                             return RedirectToAction("Index", "Users");
                         }
-                        else if (User.IsInRole("Admin"))
+                        if (User.IsInRole("Admin"))
                         {
                             return RedirectToAction("Index", "Admin");
                         }
-                        else if (User.IsInRole("MD")){
+                        if (User.IsInRole("MD")){
                             return RedirectToAction("Index", "MD");
                         }
-                        else if (User.IsInRole("MTL")){
+                        if (User.IsInRole("MTL")){
                             return RedirectToAction("Index", "MTL");
                         }
-                        else if (User.IsInRole("MT"))
+                        if (User.IsInRole("MT"))
                         {
                             return RedirectToAction("Index", "MT");
                         }
-                        return RedirectToAction("Login", "Account");
+                        return RedirectToAction("DefultHome", "Home");
                             
                     }
                     
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.Login.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return RedirectToAction("DefultHome", "Home");
             }
         }
 
@@ -170,11 +176,8 @@ namespace IA_E_commerce_.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            if (User.IsInRole("Customer"))
-            {
-                return View();
-            }
-            return HttpNotFound();
+             return View();
+            
         }
 
         //
@@ -182,7 +185,7 @@ namespace IA_E_commerce_.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(Popup model,HttpPostedFileBase image1)
         {
             if (ModelState.IsValid)
             {
@@ -194,23 +197,32 @@ namespace IA_E_commerce_.Controllers
 
 
 
-                var user = new ApplicationUser
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    firstName = model.firstName,
-                    lastName = model.lastName,
-                    phone = model.phone,
-                    jobDescription = model.jobDescription
-                    
-                   
-                };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser();
+                user.UserName = model.Register.Email;
+                user.Email = model.Register.Email;
+                user.firstName = model.Register.firstName;
+                user.lastName = model.Register.lastName;
+                user.phone = model.Register.phone;
+                user.jobDescription = model.Register.jobDescription;
+                user.ImageValue = new byte[image1.ContentLength];
+                image1.InputStream.Read(user.ImageValue, 0, image1.ContentLength);
+
+                
+           
+                
+                
+                var result = await UserManager.CreateAsync(user, model.Register.Password);
                 if (result.Succeeded)
                 {
-                   /* var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManager = new RoleManager<IdentityRole>(rolestore);
-                    await roleManager.CreateAsync(new IdentityRole("Customer"));*/
+                    string id = User.Identity.GetUserId();
+                    ApplicationUser currentUser = UserManager.FindById(id);
+                    Session["id"] = currentUser.Id;
+                    Session["Name"] = currentUser.firstName;
+                    Session["Email"] = currentUser.Email;
+                    Session["Photo"] = currentUser.ImageValue;
+                    /* var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                     var roleManager = new RoleManager<IdentityRole>(rolestore);
+                     await roleManager.CreateAsync(new IdentityRole("Customer"));*/
                     await UserManager.AddToRoleAsync(user.Id, "Customer");
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -228,7 +240,7 @@ namespace IA_E_commerce_.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return RedirectToAction("DefultHome", "Home");
         }
 
         //
@@ -261,7 +273,7 @@ namespace IA_E_commerce_.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByEmailAsync (model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
@@ -270,10 +282,10 @@ namespace IA_E_commerce_.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -307,7 +319,7 @@ namespace IA_E_commerce_.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
@@ -384,7 +396,7 @@ namespace IA_E_commerce_.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("DefultHome", "Home");
             }
 
             // Sign in the user with this external login provider if the user already has a login
@@ -450,9 +462,9 @@ namespace IA_E_commerce_.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            Session.Clear();
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login", "Account");
+            Session.RemoveAll();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("DefultHome", "Home");
         }
 
         //

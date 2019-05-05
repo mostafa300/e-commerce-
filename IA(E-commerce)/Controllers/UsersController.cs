@@ -34,11 +34,12 @@ namespace IA_E_commerce_.Controllers
         }
 
             // GET: Users
-            public ActionResult Index()
+        public ActionResult Index()
         {
+            
             if (User.IsInRole("Customer"))
             {
-                CustomerPosts customer = new CustomerPosts((string)(Session["id"]), 0); //get Customer's Posts
+                CustomerPosts customer = new CustomerPosts((string)(Session["id"]), 1); //get Customer's Posts
                 return View(customer);
             }
             else
@@ -67,7 +68,7 @@ namespace IA_E_commerce_.Controllers
         }
 
 
-        public ActionResult Save(ApplicationUser user)
+        public ActionResult Save(ApplicationUser user, HttpPostedFileBase image1)
         {
             var UserEd = new ApplicationUser();
             UserEd = _context.Users.Single(c => c.Id == user.Id);
@@ -77,6 +78,8 @@ namespace IA_E_commerce_.Controllers
             UserEd.phone = user.phone;
             UserEd.firstName = user.firstName;
             UserEd.Email = user.Email;
+            UserEd.ImageValue = new byte[image1.ContentLength];
+            image1.InputStream.Read(UserEd.ImageValue, 0, image1.ContentLength);
             _context.SaveChanges();
            // return View();
             // return View("updateProfile"); 

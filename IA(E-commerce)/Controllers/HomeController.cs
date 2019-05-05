@@ -26,8 +26,11 @@ namespace IA_E_commerce_.Controllers
 
         public ActionResult DefultHome()
         {
-            AllPosts item = new AllPosts();
-            return View(item);
+            AllPosts item = new AllPosts(false , false);
+            Popup item1 = new Popup();
+            //Popup item2 = new Popup();
+            item1.Posts = item;
+            return View(item1);
         }
         public ActionResult PostDetails(int id)
         {

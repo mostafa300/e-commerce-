@@ -32,19 +32,17 @@
             <!--<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" style="padding-top: 11px;" alt="Card image cap">
 
             <!-- Card content -->
-            <div class="card-body">
+                <div class="card-body">
 
 
-                <!-- Title -->
-                <h4 class="card-title">@Html.ActionLink(@item.Title, "PostDetails", "CreatePost", new { id = item.Id }, null)</h4>
-                <!-- Text -->
-                <p class="card-text">@item.Description</p>
-                <!-- Button -->
+                    <!-- Title -->
+                    <h4 class="card-title">@Html.ActionLink(@item.Title, "PostDetails", "CreatePost", new { id = item.Id }, null)</h4>
+                    <!-- Text -->
+                    <p class="card-text">@item.Description</p>
+                    <!-- Button -->
 
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
 
-            </div>
+                </div>
 
         </div>
     }

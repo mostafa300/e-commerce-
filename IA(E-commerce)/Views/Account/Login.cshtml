@@ -1,5 +1,5 @@
-﻿@using IA_E_commerce_.Models
-@model LoginViewModel
+﻿@using IA_E_commerce_.ModelView
+@model Popup
 @{
     /**/
 
@@ -49,99 +49,173 @@
         <!--End Post-file css -->
     
 </head>
-<body>
-    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog form-dark" role="document">
-            <!--Content-->
-            <div class="modal-content card card-image" style="width: 432px; background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
-                <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                    <!--Header-->
-                    <div class="modal-header text-center pb-4">
-                        <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">
-                            <strong>Log</strong> <a class="green-text font-weight-bold"><strong> in</strong></a>
-                        </h3>
-                        <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <!--Body-->
-                    <div class="modal-body">
-                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
+    <body>
+        <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog form-dark" role="document">
+                <!--Content-->
+                <div class="modal-content card card-image" style="width: 432px; background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
+                    <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                        <!--Header-->
+                        <div class="modal-header text-center pb-4">
+                            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">
+                                <strong>Log</strong> <a class="green-text font-weight-bold"><strong> in</strong></a>
+                            </h3>
+                            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
 
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <!--Body-->
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <!--Body-->
 
-                            @Html.LabelFor(m => m.Email, new { @class = "" })
-                            <div class="md-form mb-5" style="margin:0px">
+                                @Html.LabelFor(m => m.Login.Email, new { @class = "" })
+                                <div class="md-form mb-5" style="margin:0px">
 
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control validate white-text form-control m-input" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
-
-                            @Html.LabelFor(m => m.Password, new { @class = "" })
-                            <div class="md-form pb-3" style="margin:0px">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control validate white-text form-control m-input m-login__form-input--last" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                <div class="form-group mt-4">
-
-
-                                    <label style="margin-top: 33px;" for="checkbox624" class="white-text form-check-label">
-
-                                        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
-
-                                        <span>Remember Me</span>
-                                    </label>
+                                    @Html.TextBoxFor(m => m.Login.Email, new { @class = "form-control validate white-text form-control m-input" })
+                                    @Html.ValidationMessageFor(m => m.Login.Email, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
 
-                            <!--Grid row-->
-                            <div class="row d-flex align-items-center mb-4">
+                                @Html.LabelFor(m => m.Login.Password, new { @class = "" })
+                                <div class="md-form pb-3" style="margin:0px">
+                                    @Html.PasswordFor(m => m.Login.Password, new { @class = "form-control validate white-text form-control m-input m-login__form-input--last" })
+                                    @Html.ValidationMessageFor(m => m.Login.Password, "", new { @class = "text-danger" })
+                                    <div class="form-group mt-4">
 
-                                <!--Grid column-->
-                                <div class="text-center mb-3 col-md-12">
-                                    <button type="submit" value="Log in" class="btn btn-success btn-block btn-rounded z-depth-1">Login</button>
+
+                                        <label style="margin-top: 33px;" for="checkbox624" class="white-text form-check-label">
+
+                                            @Html.CheckBoxFor(m => m.Login.RememberMe, new { @class = "form-check-input" })
+
+                                            <span>Remember Me</span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <!--Grid column-->
 
-                            </div>
-                            <!--Grid row-->
-                            <!--Grid row-->
+                                <!--Grid row-->
+                                <div class="row d-flex align-items-center mb-4">
 
-                        }
+                                    <!--Grid column-->
+                                    <div class="text-center mb-3 col-md-12">
+                                        <button type="submit" value="Log in" class="btn btn-success btn-block btn-rounded z-depth-1">Login</button>
+                                    </div>
+                                    <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+                                <!--Grid row-->
+
+                            }
+                        </div>
                     </div>
                 </div>
+                <!--/.Content-->
             </div>
-            <!--/.Content-->
         </div>
-    </div>
-    <!-- Modal -->
+        <!-- Modal -->
 
-    <div class="text-center">
-        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm">
-            Login
-        </a>
-    </div>
-    <!--begin::Base Scripts -->
-    <script src=@Url.Content("/Content/assets/vendors/base/vendors.bundle.js") type="text/javascript"></script>
-    <script src=@Url.Content("/Content/assets/demo/default/base/scripts.bundle.js") type="text/javascript"></script>
-    <!--end::Base Scripts -->
-    <!--begin::Page Vendors -->
-    <script src=@Url.Content("/Content/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js") type="text/javascript"></script>
-    <!--end::Page Vendors -->
-    <!--begin::Page Snippets -->
-    <script src=@Url.Content("/Content/assets/app/js/dashboard.js") type="text/javascript"></script>
-    <!--end::Page Snippets -->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="/Content/components/Post/text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="/Content/components/Post/text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="/Content/components/Post/text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="/Content/components/Post/text/javascript" src="js/mdb.min.js"></script>
-</body>
+        <div class="text-center">
+            <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm">
+                Login
+            </a>
+        </div>
+
+        <div class="modal fade" id="darkModalForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog form-dark" role="document">
+                <!--Content-->
+                <div class="modal-content card card-image" style="width: 432px; background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
+                    <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                        <!--Header-->
+                        <div class="modal-header text-center pb-4">
+                            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">
+                                <strong>Log</strong> <a class="green-text font-weight-bold"><strong> in</strong></a>
+                            </h3>
+                            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "m-login__form m-form", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.firstName, new { @class = "col-md-2 control-label" })
+                                    @Html.TextBoxFor(m => m.Register.firstName, new { @class = "form-control m-input" })
+                                    <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                                </div>
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.lastName, new { @class = "col-md-2 control-label" })
+                                    @Html.TextBoxFor(m => m.Register.lastName, new { @class = "form-control m-input" })
+                                    <!--<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">-->
+                                </div>
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.jobDescription, new { @class = "col-md-2 control-label" })
+                                    @Html.TextBoxFor(m => m.Register.jobDescription, new { @class = "form-control m-input" })
+                                    <!-- <input class="form-control m-input" type="password" placeholder="Password" name="password">-->
+                                </div>
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.phone, new { @class = "col-md-2 control-label" })
+                                    @Html.TextBoxFor(m => m.Register.phone, new { @class = "form-control m-input" })
+                                </div>
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.Email, new { @class = "col-md-2 control-label" })
+                                    @Html.TextBoxFor(m => m.Register.Email, new { @class = "form-control m-input" })
+                                </div>
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.Password, new { @class = "col-md-2 control-label" })
+                                    @Html.PasswordFor(m => m.Register.Password, new { @class = "form-control m-input" })
+                                </div>
+                                <div class="form-group m-form__group">
+                                    @Html.LabelFor(m => m.Register.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                                    @Html.PasswordFor(m => m.Register.ConfirmPassword, new { @class = "form-control m-input" })
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" class="btn btn-default" value="Register" />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <div class="text-center">
+            <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm1">
+                Register
+            </a>
+        </div>
+        <!--begin::Base Scripts -->
+        <script src=@Url.Content("/Content/assets/vendors/base/vendors.bundle.js") type="text/javascript"></script>
+        <script src=@Url.Content("/Content/assets/demo/default/base/scripts.bundle.js") type="text/javascript"></script>
+        <!--end::Base Scripts -->
+        <!--begin::Page Vendors -->
+        <script src=@Url.Content("/Content/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js") type="text/javascript"></script>
+        <!--end::Page Vendors -->
+        <!--begin::Page Snippets -->
+        <script src=@Url.Content("/Content/assets/app/js/dashboard.js") type="text/javascript"></script>
+        <!--end::Page Snippets -->
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="/Content/components/Post/text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="/Content/components/Post/text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="/Content/components/Post/text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="/Content/components/Post/text/javascript" src="js/mdb.min.js"></script>
+    </body>
 </html>

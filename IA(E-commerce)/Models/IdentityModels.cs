@@ -18,7 +18,7 @@ namespace IA_E_commerce_.Models
         public string lastName { get; set; }
         public string phone { get; set; }
         public string jobDescription { get; set; }
-        public string Photo { get; set; }
+        public byte[] ImageValue { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -32,6 +32,9 @@ namespace IA_E_commerce_.Models
     {
         public DbSet<PostContent> Posts { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Team> Team { get; set; }
+        public DbSet<FeedbackEvaluate> FeedbackEvaluate { get; set; }
+        public DbSet<Notification> Notification { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

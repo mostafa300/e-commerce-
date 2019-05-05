@@ -16,6 +16,7 @@ namespace IA_E_commerce_.ModelView
         public CustomerPosts(string id ,int chocie)
         {
             this.Customerid = id;
+            //Home Page Customer 
             if(chocie == 1)
             {
                 _context = new ApplicationDbContext();
@@ -24,7 +25,7 @@ namespace IA_E_commerce_.ModelView
                 img = (from d in _context.Images select d).ToList();
 
                 pst = new List<PostContent>();
-                pst = (from d in _context.Posts select d).Where(c => c.Relationid == this.Customerid).ToList();
+                pst = (from d in _context.Posts select d).Where(c => c.Relationid == this.Customerid).Where(m => m.Approvement == true).Where(m=> m.assign==false).ToList();
             }else if(chocie == 2)
             {
                 _context = new ApplicationDbContext();
@@ -33,7 +34,7 @@ namespace IA_E_commerce_.ModelView
                 img = (from d in _context.Images select d).ToList();
 
                 pst = new List<PostContent>();
-                pst = (from d in _context.Posts select d).Where(c => c.Relationid == this.Customerid).Where(m=>m.delivered == true).ToList();
+                pst = (from d in _context.Posts select d).Where(c => c.Relationid == this.Customerid).Where(m=>m.delivered == true).Where(m=>m.Approvement == true).Where(m => m.assign == true).ToList();
             }
             else
             {
@@ -43,7 +44,7 @@ namespace IA_E_commerce_.ModelView
                 img = (from d in _context.Images select d).ToList();
 
                 pst = new List<PostContent>();
-                pst = (from d in _context.Posts select d).Where(c => c.Relationid == this.Customerid).Where(m => m.delivered == false).ToList();
+                pst = (from d in _context.Posts select d).Where(c => c.Relationid == this.Customerid).Where(m => m.delivered == false).Where(m => m.Approvement == true).Where(m => m.assign == true).ToList();
             }
             
 

@@ -1,13 +1,18 @@
-﻿@model  IA_E_commerce_.ModelView.AllPosts
+﻿@model IA_E_commerce_.ModelView.MTLorMTPost
 @{
-    ViewBag.Title = "index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    /**/
+
+    ViewBag.Title = "Delivered";
+    Layout = "~/Views/Shared/_MTLayout.cshtml";
 }
+
+
+
 
 
 <div class="container">
 
-    @foreach (var item in Model.pst)
+    @foreach (var item in Model.MTPosts)
     {
         var postImages = Model._context.Images.ToList().Where(x => x.PostID == item.Id);
 
@@ -38,9 +43,6 @@
                 <p class="card-text">@item.Description</p>
                 <!-- Button -->
 
-                @Html.ActionLink("Edit Details", "EditPostDetails", "CreatePost", new { id = item.Id },new { @class = "btn btn-success m-btn m-btn--custom m-btn--bolder m-btn--uppercase" })
-                @Html.ActionLink("Edit Images", "EditPostImages", "CreatePost", new { id = item.Id },new { @class = "btn btn-info active" })
-                @Html.ActionLink("Delete", "DeletePost", "CreatePost", new { id = item.Id }, new { @class = "btn btn-danger active" })
 
             </div>
 

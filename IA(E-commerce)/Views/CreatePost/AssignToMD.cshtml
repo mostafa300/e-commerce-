@@ -1,0 +1,41 @@
+﻿@model IA_E_commerce_.ModelView.AdminCreatePost
+@{
+    ViewBag.Title = "AssignToMD";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+<div class="m-portlet m-portlet--tab container" style="margin: 20px;border-radius: 11px;width: 97%;">
+    <h2 style="text-align: center;padding-top: 32px;font-weight: 500;">Assign To MD</h2>
+
+    @using (Html.BeginForm("AssignAction", "CreatePost", FormMethod.Post, new { enctype = "multipart/form-data", @class = "m-form m-form--fit m-form--label-align-right" }))
+    {
+
+        <div class="m-portlet__body">
+
+            
+            
+            <div class="form-group m-form__group">
+                @Html.Label("Marketing Directors", new { @class = "exampleTextarea" })
+
+                @Html.DropDownListFor(m => m.pst.MDID, new SelectList(Model.Customer, "Id", "firstName"), "Select Customer", new { @class = "cssstyle" })
+                @Html.ValidationMessageFor(model => model.Customer)
+                @Html.HiddenFor(m=>m.pst.Id)
+            </div>
+           
+        </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+
+                <input type="submit" class="btn btn-primary" value="Create" />
+
+                <button type="reset" class="btn btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+    }
+</div>
+
+

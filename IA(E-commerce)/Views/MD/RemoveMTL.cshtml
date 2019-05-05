@@ -1,0 +1,32 @@
+﻿@model IA_E_commerce_.ModelView.AllTeams
+
+@{
+    ViewBag.Title = "RemoveMTL";
+    Layout = "~/Views/Shared/_MDLayout.cshtml";
+}
+
+<h2>Remove Marketing Team Leader</h2>
+
+<tbody class="m-datatable__body" style="">
+
+    @for (int i = 0; i < Model.Team.Count; i++)
+
+    {
+        // get user data from database
+        <tr data-row="0" class="m-datatable__row" style="left: 0px;">
+
+            @if (Model.Team[i].MTLID != null)
+            {
+                <td>
+                    @Html.ActionLink("Delete", "DeleteMTL", "MD", new { id = Model.Team[i].MTLID, projectID = Model.Team[i].Project_id }, new { @class = "btn m-btn--pill    btn-danger" })
+
+                </td>
+            }
+
+
+
+        </tr>
+
+    }
+
+</tbody>

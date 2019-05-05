@@ -1,0 +1,233 @@
+﻿@model IEnumerable<IA_E_commerce_.Models.ApplicationUser>
+@{
+    ViewBag.Title = "ListMTL";
+    Layout = "~/Views/Shared/_MDLayout.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    Show All Marketing Trainees
+                </h3>
+                <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                    <li class="m-nav__item m-nav__item--home">
+                        <a href="#" class="m-nav__link m-nav__link--icon">
+                            <i class="m-nav__link-icon la la-home"></i>
+                        </a>
+                    </li>
+                    <li class="m-nav__separator">
+                        -
+                    </li>
+                    <li class="m-nav__item">
+                        <a href="" class="m-nav__link">
+                            <span class="m-nav__link-text">
+                                Datatables
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-nav__separator">
+                        -
+                    </li>
+                    <li class="m-nav__item">
+                        <a href="" class="m-nav__link">
+                            <span class="m-nav__link-text">
+                                Base
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-nav__separator">
+                        -
+                    </li>
+                    <li class="m-nav__item">
+                        <a href="" class="m-nav__link">
+                            <span class="m-nav__link-text">
+                                Local Data
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="m-content">
+
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Local Datatable
+                            <small>
+                                initialized from javascript array
+                            </small>
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="m-portlet__body">
+
+                <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 order-2 order-xl-1">
+                            <div class="form-group m-form__group row align-items-center">
+
+                                <div class="col-md-4">
+                                    <div class="m-input-icon m-input-icon--left">
+                                        <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
+                                        <span class="m-input-icon__icon m-input-icon__icon--left">
+                                            <span>
+                                                <i class="la la-search"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                            <a href="/admin/CreateMD" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                <span>
+                                    <i class="la la-cart-plus"></i>
+                                    <span>
+                                        Add MD
+                                    </span>
+                                </span>
+                            </a>
+                            <div class="m-separator m-separator--dashed d-xl-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded" id="local_data" style="">
+                    <table class="m-datatable__table" style="display: block; min-height: 300px; overflow-x: auto;">
+                        <thead class="m-datatable__head">
+                            <tr class="m-datatable__row" style="left: 0px;">
+                                <th data-field="RecordID" class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check">
+                                    <span style="width: 50px;">
+                                        <label class="m-checkbox m-checkbox--single m-checkbox--all m-checkbox--solid m-checkbox--brand">
+                                            <input type="checkbox">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </th>
+                                <th data-field="OrderID" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Photo</span>
+                                </th>
+                                <th data-field="OrderID" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Frist Name</span>
+                                </th>
+                                <th data-field="OrderID" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Last Name</span>
+                                </th>
+                                <th data-field="ShipName" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Email</span>
+                                </th>
+                                <th data-field="Currency" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 100px;">Job Description</span>
+                                </th>
+                                <th data-field="ShipAddress" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Phone</span>
+                                </th>
+                                <th data-field="ShipDate" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Status</span>
+                                </th>
+
+
+                                <th data-field="Actions" class="m-datatable__cell m-datatable__cell--sort">
+                                    <span style="width: 110px;">Remove</span>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="m-datatable__body" style="">
+                            @foreach (var User in Model)
+                            {
+                            <tr data-row="0" class="m-datatable__row" style="left: 0px;">
+                                <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" data-field="RecordID">
+                                    <span style="width: 50px;">
+                                        <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
+                                            <input type="checkbox" value="1">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </td>
+                                <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" data-field="RecordID">
+                                    <span style="width: 50px;">
+                                        <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
+                                            <input type="checkbox" value="1">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </td>
+                                <td data-field="Name" class="m-datatable__cell">
+                                    @{
+                                        var base64 = Convert.ToBase64String(User.ImageValue);
+                                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                                    }
+
+
+
+                                    <span class="m-topbar__userpic" style="width: 110px;">
+                                        <img src="@imgsrc" width="42" height="39" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                                    </span>
+                                    <span class="m-topbar__username m--hide">
+                                        Nick
+                                    </span>
+
+                                </td>
+                                <td data-field="Name" class="m-datatable__cell">
+                                    <span style="width: 110px;">@User.firstName</span>
+                                </td>
+                                <td data-field="Email" class="m-datatable__cell">
+                                    <span style="width: 110px;">@User.lastName</span>
+                                </td>
+                                <td data-field="Currency" class="m-datatable__cell">
+                                    <span style="width: 100px;">@User.Email</span>
+                                </td>
+                                <td data-field="ShipAddress" class="m-datatable__cell">
+                                    <span style="width: 110px;">@User.jobDescription</span>
+                                </td>
+                                <td data-field="ShipDate" class="m-datatable__cell">
+                                    <span style="width: 110px;">@User.phone</span>
+                                </td>
+
+
+
+                                <td data-field="Type" class="m-datatable__cell">
+                                    <span style="width: 110px;">
+                                        <span class="">
+                                        </span>&nbsp;
+                                        <span style="width: 110px;">
+                                            <span class="m-badge  m-badge--primary m-badge--wide">
+                                                MTL
+                                            </span>
+                                        </span>
+                                    </span>
+                                </td>
+
+                                <td data-field="Type" class="m-datatable__cell">
+
+                                    @Html.ActionLink("Remove", "DeleteMTL", "MD", new { id = User.Id }, new { @class = "btn m-btn--pill m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning" })
+                                </td>
+
+                            </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

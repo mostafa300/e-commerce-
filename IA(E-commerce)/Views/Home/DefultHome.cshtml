@@ -1,41 +1,204 @@
-﻿@model  IA_E_commerce_.ModelView.AllPosts
+﻿@model  IA_E_commerce_.ModelView.Popup
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_HomeView.cshtml";
 }
-<div class="container">
-    @foreach (var item in Model.pst)
+
+<!-- Modal -->
+<div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content form-elegant">
+            <!--Header-->
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Logoin</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body mx-4">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <!--Body-->
+
+
+                    <div class="md-form mb-5">
+                        @Html.LabelFor(m => m.Login.Email, new { @class = "col-md-4 control-label" })
+                        @Html.TextBoxFor(m => m.Login.Email, new { @class = "form-control validate" })
+                        @Html.ValidationMessageFor(m => m.Login.Email, "", new { @class = "text-danger" })
+
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+
+                    <div class="md-form mb-5">
+
+                        @Html.PasswordFor(m => m.Login.Password, new { @class = "form-control validate"  })
+                        @Html.LabelFor(m => m.Login.Password, new { @class = "col-md-4 control-label" })
+                        @Html.ValidationMessageFor(m => m.Login.Password, "", new { @class = "text-danger" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+
+
+                    <div class="text-center mb-3">
+                        <input type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a" value="Login" style="color: #fff;border-radius: 97px; font-size: 15px;" />
+
+                    </div>
+
+
+
+
+                }
+            </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content form-elegant">
+            <!--Header-->
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Register</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body mx-4">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "m-login__form m-form", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <!--Body-->
+                    <div class="md-form mb-5">
+                        @Html.LabelFor(m => m.Register.firstName, new { @class = "col-md-4 control-label" })
+                        @Html.TextBoxFor(m => m.Register.firstName, new { @class = "form-control validate" })
+
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+                    <div class="md-form mb-5">
+
+                        @Html.TextBoxFor(m => m.Register.lastName, new { @class = "form-control validate" })
+                        @Html.LabelFor(m => m.Register.lastName, new { @class = "col-md-4 control-label" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+                    <div class="md-form mb-5">
+
+                        @Html.TextBoxFor(m => m.Register.jobDescription, new { @class = "form-control validate" })
+                        @Html.LabelFor(m => m.Register.jobDescription, new { @class = "col-md-4 control-label" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+                    <div class="md-form mb-5">
+
+                        @Html.TextBoxFor(m => m.Register.phone, new { @class = "form-control validate" })
+                        @Html.LabelFor(m => m.Register.phone, new { @class = "col-md-4 control-label" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+                    <div class="md-form mb-5">
+
+                        @Html.TextBoxFor(m => m.Register.Email, new { @class = "form-control validate" })
+                        @Html.LabelFor(m => m.Register.Email, new { @class = "col-md-4 control-label" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+
+                    <div class="md-form mb-5">
+
+                        @Html.PasswordFor(m => m.Register.Password, new { @class = "form-control validate" })
+                        @Html.LabelFor(m => m.Register.Password, new { @class = "col-md-4 control-label" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+
+                    <div class="md-form mb-5">
+
+                        @Html.PasswordFor(m => m.Register.ConfirmPassword, new { @class = "form-control validate" })
+                        @Html.LabelFor(m => m.Register.ConfirmPassword, new { @class = "col-md-6 control-label" })
+                        <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
+                    </div>
+                    <div class="form-group m-form__group">
+
+                        @Html.Label("Photo", new { @class = "exampleInputEmail1" })
+
+                        <div></div>
+
+                        <div class="custom-file">
+
+                            <input type="file" class="custom-file-input" id="customFile" name="image1" multiple />
+                            <label class="custom-file-label" for="customFile">
+                                Choose file
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-3">
+                        <input type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a" value="Register" style="color: #fff;border-radius: 97px; font-size: 15px;" />
+
+                    </div>
+
+
+
+
+
+                }
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+<div class="row text-center" style="width:50%;">
+    <div class="col-md-6">
+        <a href="" class="btn m-btn m-btn--pill m-btn--gradient-from-focus m-btn--gradient-to-danger" data-toggle="modal" data-target="#darkModalForm">
+            Login
+        </a>
+    </div>
+    <div class="col-md-6">
+        <a href="" class="btn m-btn m-btn--pill m-btn--gradient-from-focus m-btn--gradient-to-danger" data-toggle="modal" data-target="#elegantModalForm">
+            Register
+        </a>
+    </div>
+</div>
+<div class="container text-center">
+    @foreach (var item in Model.Posts.pst)
     {
 
-        var postImages = Model._context.Images.ToList().Where(x => x.PostID == item.Id);
-    <div class="card container">
+        var postImages = Model.Posts._context.Images.ToList().Where(x => x.PostID == item.Id);
+        <div class="card container">
 
-        <!-- Card image -->
-        @foreach (var x in postImages)
-        {
+            <!-- Card image -->
+            @foreach (var x in postImages)
+            {
 
-            var base64 = Convert.ToBase64String(x.ImageValue);
-            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                var base64 = Convert.ToBase64String(x.ImageValue);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
 
-            <img class="card-img-top" src='@imgsrc' style="padding-top: 11px;height: 500px;" alt="Card image cap" />
+                <img class="card-img-top" src='@imgsrc' style="padding-top: 11px;height: 500px;" alt="Card image cap" />
 
-            break;
+                break;
 
 
-        }
-        <!-- Card content -->
-        <div class="card-body">
+            }
+            <!-- Card content -->
+            <div class="card-body">
 
-            <!-- Title -->
-            <h4 class="card-title"> @Html.ActionLink(@item.Title, "PostDetails", "Home", new { id = item.Id }, null)</h4>
-            <!-- Text -->
-            <p class="card-text">@item.Description</p>
-            <!-- Button -->
-            <a href="#" class="btn btn-primary">Button</a>
+                <!-- Title -->
+                <h4 class="card-title"> @Html.ActionLink(@item.Title, "PostDetails", "Home", new { id = item.Id }, null)</h4>
+                <!-- Text -->
+                <p class="card-text">@item.Description</p>
+                <!-- Button -->
+                <!-- Button -->
+
+            </div>
 
         </div>
 
-    </div>
-        
     }
-    </div>
+</div>

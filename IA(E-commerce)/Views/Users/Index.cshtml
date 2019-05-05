@@ -47,6 +47,7 @@
                     @Html.ActionLink("Edit Details", "EditPostDetails", "CreatePost", new { id = item.Id },new { @class = "btn btn-success m-btn m-btn--custom m-btn--bolder m-btn--uppercase" })
                     @Html.ActionLink("Edit Images", "EditPostImages", "CreatePost", new { id = item.Id },new { @class = "btn btn-info active" })
                     @Html.ActionLink("Delete", "DeletePost", "CreatePost", new { id = item.Id }, new { @class = "btn btn-danger active" })
+                    @Html.ActionLink("Assign", "AssignToMD", "CreatePost", new { id = item.Id }, new { @class = "btn btn-danger active" })
 
                 </div>
 

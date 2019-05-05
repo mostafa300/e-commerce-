@@ -5,54 +5,181 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title ">
+                Marketing Director
+            </h3>
+        </div>
+        <div>
 
-
-<div class="m-login__signin">
-    <div class="m-login__head">
-        <h3 class="m-login__title">
-            CreateMD
-        </h3>
+        </div>
     </div>
-    @using (Html.BeginForm("CreateMDAction", "Admin", FormMethod.Post, new { @class = "m-login__form m-form", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary("", new { @class = "text-danger" })
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.firstName, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.firstName, new { @class = "form-control m-input" })
-            <!--<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">-->
-        </div>
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.lastName, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.lastName, new { @class = "form-control m-input" })
-            <!--<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">-->
-        </div>
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.jobDescription, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.jobDescription, new { @class = "form-control m-input" })
-            <!-- <input class="form-control m-input" type="password" placeholder="Password" name="password">-->
-        </div>
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.phone, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.phone, new { @class = "form-control m-input" })
-        </div>
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control m-input" })
-        </div>
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control m-input" })
-        </div>
-        <div class="form-group m-form__group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control m-input" })
-        </div>
+</div>
+<!-- END: Subheader -->
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Create" />
+
+<div class="m-content">
+    <div class="row">
+
+        <div class="container" style="margin: 20px;border-radius: 11px;width: 97%;">
+            <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-tools">
+                        <ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
+                                    <i class="flaticon-share m--hide"></i>
+                                    Update Profile
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
+                                    Messages
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">
+                                    Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="m_user_profile_tab_1">
+
+                        @using (Html.BeginForm("CreateMDAction", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "m-login__form m-form", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            //@Html.HiddenFor(model => model.Id)
+                        <div class="m-portlet__body">
+                            <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                <div class="alert m-alert m-alert--default" role="alert">
+                                    The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <div class="col-10 ml-auto">
+                                    <h3 class="m-form__section">
+                                        1. Personal Details
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    First Name
+                                </label>
+
+                                <div class="col-7">
+                                    @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control m-input" } })
+                                    @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    Last Name
+                                </label>
+                                <div class="col-7">
+                                    @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control m-input" } })
+                                    @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    Email
+                                </label>
+                                <div class="col-7">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control m-input" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    Phone Number
+                                </label>
+                                <div class="col-7">
+                                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    job Description.
+                                </label>
+                                <div class="col-7">
+                                    @Html.EditorFor(model => model.jobDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.jobDescription, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    Password
+                                </label>
+                                <div class="col-7">
+
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label for="example-text-input" class="col-2 col-form-label">
+                                    Confirm Password
+                                </label>
+                                <div class="col-7">
+
+                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group">
+
+                                @Html.Label("Photo", new { @class = "exampleInputEmail1" })
+
+                                <div></div>
+
+                                <div class="custom-file">
+
+                                    <input type="file" class="custom-file-input" id="customFile" name="image1" />
+                                    <label class="custom-file-label" for="customFile">
+                                        Choose file
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-7">
+                                            <button type="submit" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                                                Save changes
+                                            </button>
+                                            &nbsp;&nbsp;
+                                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="tab-pane " id="m_user_profile_tab_2"></div>
+                    <div class="tab-pane " id="m_user_profile_tab_3"></div>
+                </div>
             </div>
         </div>
-    }
+    </div>
 </div>

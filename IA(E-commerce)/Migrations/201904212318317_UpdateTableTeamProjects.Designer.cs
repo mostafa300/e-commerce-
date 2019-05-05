@@ -7,13 +7,13 @@ namespace IA_E_commerce_.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddTransationsTable : IMigrationMetadata
+    public sealed partial class UpdateTableTeamProjects : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddTransationsTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateTableTeamProjects));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904172229097_AddTransationsTable"; }
+            get { return "201904212318317_UpdateTableTeamProjects"; }
         }
         
         string IMigrationMetadata.Source

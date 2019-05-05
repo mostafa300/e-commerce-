@@ -1,0 +1,58 @@
+﻿@model IA_E_commerce_.Models.PostContent
+
+@{
+    ViewBag.Title = "SetSchedule";
+    Layout = "~/Views/Shared/_MDLayout.cshtml";
+}
+
+<div class="m-portlet m-portlet--tab container" style="margin: 20px;border-radius: 11px;width: 97%;">
+    <h2 style="text-align: center;padding-top: 32px;font-weight: 500;">Set Schedule</h2>
+
+    @using (Html.BeginForm("SetSchedule", "MD", FormMethod.Post, new { @class = "m-form m-form--fit m-form--label-align-right" }))
+    {
+
+        <div class="m-portlet__body">
+
+            <div class="form-group m-form__group">
+
+
+                @Html.Label("Starting Point", new { @class = "example-date-input" })
+                @Html.TextBoxFor(model => model.StartingPoint, "{0:dd/MM/yyyy}", new { @class = "form-control m-inpu--airt" })
+                @Html.ValidationMessageFor(model => model.StartingPoint, "", new { @class = "text-danger" })
+
+
+            </div>
+
+            <div class="form-group m-form__group">
+                @Html.Label("Ending Point", new { @class = "example-date-input" })
+
+                @Html.TextBoxFor(model => model.EndingPoint, "{0:dd/MM/yyyy}", new { @class = "form-control m-input--air" })
+                @Html.ValidationMessageFor(model => model.EndingPoint, "", new { @class = "text-danger" })
+
+
+            </div>
+
+            <div class="form-group m-form__group">
+                @Html.Label("Price", new { @class = "example-text-input" })
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control m-input m-input--air" })
+                <!--- //Html.EditorFor(model => model.Price, new { htmlAttributes = new { placeholder = "Estimate Project Price" } })-->
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+
+            </div>
+
+        </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+
+                <input type="submit" class="btn btn-primary" value="Create" />
+
+                <button type="reset" class="btn btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+    }
+</div>
+
+

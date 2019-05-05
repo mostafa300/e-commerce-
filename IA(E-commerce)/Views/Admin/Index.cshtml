@@ -1,0 +1,50 @@
+﻿@model  IA_E_commerce_.ModelView.AllPosts
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+
+    @foreach (var item in Model.pst)
+    {
+        var postImages = Model._context.Images.ToList().Where(x => x.PostID == item.Id);
+
+        <div class="card " style="width: 50%; margin-left:150px; ">
+
+            <!-- Card image -->
+            @foreach (var x in postImages)
+            {
+
+                var base64 = Convert.ToBase64String(x.ImageValue);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                <img class="card-img-top" src='@imgsrc' style="padding-top: 11px;height: 500px;" alt="Card image cap" />
+
+                break;
+
+
+            }
+            <!--<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" style="padding-top: 11px;" alt="Card image cap">
+
+            <!-- Card content -->
+            <div class="card-body">
+
+
+                <!-- Title -->
+                <h4 class="card-title">@Html.ActionLink(@item.Title, "PostDetails", "CreatePost", new { id = item.Id }, null)</h4>
+                <!-- Text -->
+                <p class="card-text">@item.Description</p>
+                <!-- Button -->
+
+                @Html.ActionLink("Edit Details", "EditPostDetails", "Admin", new { id = item.Id },new { @class = "btn btn-success m-btn m-btn--custom m-btn--bolder m-btn--uppercase" })
+                @Html.ActionLink("Edit Images", "EditPostImages", "Admin", new { id = item.Id },new { @class = "btn btn-info active" })
+                @Html.ActionLink("Delete", "DeletePost", "Admin", new { id = item.Id }, new { @class = "btn btn-danger active" })
+
+            </div>
+
+        </div>
+    }
+
+</div>

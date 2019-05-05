@@ -1,0 +1,92 @@
+﻿@model  IA_E_commerce_.ModelView.PostImages
+@{
+    /**/
+
+    ViewBag.Title = "PostDetails";
+    Layout = "~/Views/Shared/_MDLayout.cshtml";
+}
+
+<div class="container" style="margin: 20px;border-radius: 11px;width: 97%;">
+    <div class="m-portlet">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Project Details
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            <!--begin::Section-->
+            <div class="m-section">
+                <h3 class="m-section__heading">
+                    Title
+                </h3>
+                <span class="m-section__sub">
+                    @Model.pst.Title
+                </span>
+
+            </div>
+            <!--end::Section-->
+            <div class="m-separator m-separator--dashed"></div>
+            <!--begin::Section-->
+            <div class="m-section">
+                <h3 class="m-section__heading">
+                    Description
+                </h3>
+                <span class="m-section__sub">
+                    @Model.pst.Description
+                </span>
+
+            </div>
+            <div class="m-section">
+                <h3 class="m-section__heading">
+                    Status
+                </h3>
+                
+                    @if(Model.pst.delivered == true)
+                    {
+                    <span class="m-section__sub">
+                        Delivered
+                    </span>
+                    }
+                    else
+                    {
+                    <span class="m-section__sub">
+                        Not Delivered
+                    </span>
+                    }
+
+            </div>
+            <!--end::Section-->
+            <div class="m-separator m-separator--dashed"></div>
+            <!--begin::Section-->
+            <div class="m-section">
+                <h3 class="m-section__heading">
+                    Images
+                </h3>
+                <span class="m-section__sub">
+                    <div class="row">
+                        @foreach (var x in Model.img)
+                        {
+
+                            var base64 = Convert.ToBase64String(x.ImageValue);
+                            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                            <div class="col-md-6">
+                                <img src='@imgsrc' style="width:350px;height:350px;margin-bottom: 20px;" />
+                            </div>
+
+                        }
+                    </div>
+
+
+                </span>
+
+            </div>
+            <!--end::Section-->
+
+        </div>
+    </div>
+</div>
+

@@ -60,12 +60,13 @@
 
 		<link href=@Url.Content("/Content/assets/vendors/base/vendors.bundle.css") rel="stylesheet" type="text/css" />
 		<link href=@Url.Content("/Content/assets/demo/default/base/style.bundle.css") rel="stylesheet" type="text/css" />
+		<link href=@Url.Content("/Content/assets/demo/default/base/stylesheet.bundle.css") rel="stylesheet" type="text/css" />
 		<!--end::Base Styles -->
 
 	</head>
 	<!-- end::Head -->
 	<!-- end::Body -->
-	<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+	<body  class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
 		<!-- begin:: Page -->
 		<div class="m-grid m-grid--hor m-grid--root m-page">
 			<!-- BEGIN: Header -->
@@ -126,7 +127,7 @@
 											<span class="m-menu__arrow m-menu__arrow--adjust"></span>
 											<ul class="m-menu__subnav">
 												<li class="m-menu__item " aria-haspopup="true">
-													<a href=@Url.Content("/CreatePost/creates") class="m-menu__link ">
+													<a href=@Url.Content("/Admin/createPost") class="m-menu__link ">
 														<i class="m-menu__link-icon flaticon-file"></i>
 														<span class="m-menu__link-text">
 															Create New Project
@@ -135,7 +136,7 @@
 												</li>
 
 												<li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-													<a href=@Url.Content("/CreatePost/NotDelivered") class="m-menu__link ">
+													<a href=@Url.Content("/Admin/NotDeliveredProject") class="m-menu__link ">
 														<i class="m-menu__link-icon flaticon-file"></i>
 														<span class="m-menu__link-text">
 															Current Project
@@ -143,7 +144,7 @@
 													</a>
 												</li>
 												<li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-													<a href=@Url.Content("/CreatePost/NotDelivered") class="m-menu__link ">
+													<a href=@Url.Content("/Admin/NotDeliveredProject") class="m-menu__link ">
 														<i class="m-menu__link-icon flaticon-file"></i>
 														<span class="m-menu__link-text">
 															Previous Project
@@ -154,7 +155,7 @@
 
 
 												<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-													<a href=@Url.Content("/Users/About") class="m-menu__link m-menu__toggle">
+													<a href=@Url.Content("/Admin/About") class="m-menu__link m-menu__toggle">
 														<i class="m-menu__link-icon flaticon-layers"></i>
 														<span class="m-menu__link-text">
 															About
@@ -452,7 +453,7 @@
 																</li>
 																<li class="m-nav__item">
 
-																	<a href=@Url.Content("/Users/updateProfile") class="m-nav__link">
+																	<a href=@Url.Content("/Admin/UpdateProfile") class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
 																		<span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
@@ -528,7 +529,7 @@
 						 m-menu-scrollable="0" m-menu-dropdown-timeout="500">
 						<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
 							<li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
-								<a href=@Url.Content("/Users/Index") class="m-menu__link ">
+								<a href=@Url.Content("/Admin/index") class="m-menu__link ">
 									<i class="m-menu__link-icon flaticon-line-graph"></i>
 									<span class="m-menu__link-title">
 										<span class="m-menu__link-wrap">
@@ -551,7 +552,7 @@
 								<i class="m-menu__section-icon flaticon-more-v3"></i>
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-								<a href=@Url.Content("/CreatePost/creates") class="m-menu__link m-menu__toggle">
+								<a href=@Url.Content("/Admin/createPost") class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-layers"></i>
 									<span class="m-menu__link-text">
 										Add Project
@@ -624,7 +625,73 @@
 							</li>
 
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-								<a href=@Url.Content("/CreatePost/NotDelivered") class="m-menu__link m-menu__toggle">
+								<a href="javascript:;" class="m-menu__link m-menu__toggle">
+									<i class="m-menu__link-icon flaticon-interface-6"></i>
+									<span class="m-menu__link-text">
+										Show All Users
+									</span>
+									<i class="m-menu__ver-arrow la la-angle-right"></i>
+								</a>
+								<div class="m-menu__submenu ">
+									<span class="m-menu__arrow"></span>
+									<ul class="m-menu__subnav">
+										<li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+											<span class="m-menu__link">
+												<span class="m-menu__link-text">
+													Show All Users
+												</span>
+											</span>
+										</li>
+										<li class="m-menu__item " aria-haspopup="true">
+											<a href=@Url.Content("/Admin/AllMD") class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													Show All Marketing Directors
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item " aria-haspopup="true">
+											<a href=@Url.Content("/Admin/AllMTL") class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													Show All Marketing Team Leader 
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item " aria-haspopup="true">
+											<a href=@Url.Content("/Admin/AllMT") class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													Show All Markting Trainee
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item " aria-haspopup="true">
+											<a href=@Url.Content("/Admin/AllCustomer") class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													Show All Customer
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+
+
+
+
+						   
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+								<a href=@Url.Content("/Admin/NotDeliveredProject") class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-layers"></i>
 									<span class="m-menu__link-text">
 										Current Projects
@@ -636,7 +703,7 @@
 
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-								<a href=@Url.Content("/CreatePost/Delivered") class="m-menu__link m-menu__toggle">
+								<a href=@Url.Content("/Admin/DeliveredProject") class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-layers"></i>
 									<span class="m-menu__link-text">
 										Previous Project
@@ -648,7 +715,7 @@
 
 
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-								<a href=@Url.Content("/Users/About") class="m-menu__link m-menu__toggle">
+								<a href=@Url.Content("/Admin/About") class="m-menu__link m-menu__toggle">
 									<i class="m-menu__link-icon flaticon-layers"></i>
 									<span class="m-menu__link-text">
 										About
